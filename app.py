@@ -5,7 +5,7 @@ import random
 import requests
 import plotly.express as px
 import pydeck as pdk
-from google import genai
+import google.generativeai as genai
 import time
 from sklearn.linear_model import LinearRegression
 import networkx as nx
@@ -22,7 +22,8 @@ st.title("🚀 AI SUPPLY CHAIN DISRUPTION PREDICION AND RISK MONITORING")
 # =========================
 from dotenv import load_dotenv
 load_dotenv()
-client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 # =========================
 # STATE
@@ -666,11 +667,8 @@ IMPORTANT:
 """
 
     try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=context
-        )
-        reply = response.text if response and response.text else "No response from AI"
+        rresponse = model.generate_content(context)
+        reply = response.text if response else "No response"
     except Exception as e:
         reply = f"AI Error: {str(e)}"
 
