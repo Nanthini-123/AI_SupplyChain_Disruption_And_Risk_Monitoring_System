@@ -121,8 +121,14 @@ This project uses a **Hybrid Intelligence Approach**:
 - Risk-based shipment rerouting engines
 
 ---
+```bash
 
-## 🚀 How to Run the Project
+## 🌐 Live Application
+
+🔗 https://aisupplychaindisruptionprediction.streamlit.app/
+
+👉 Open the link to experience the real-time AI Supply Chain Control Tower.
+## 🚀 How to Run the Project 
 
 ```bash
 # Install dependencies
